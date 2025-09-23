@@ -17,10 +17,12 @@ function AdventurePackage() {
       .catch(() => console.error("❌ Failed to load adventure packages"));
   }, []);
 
-  // ✅ check login helper
+  // ✅ Proper login check
   const handleViewMore = (pid) => {
-    const user = localStorage.getItem("user"); // must match your login storage key
-    if (!user) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const userProfile = localStorage.getItem("userProfile");
+
+    if (isLoggedIn !== "true" || !userProfile) {
       alert("⚠ Please login to view and book packages!");
       navigate("/signin");
     } else {
@@ -29,10 +31,12 @@ function AdventurePackage() {
   };
 
   const handleAddPackage = () => {
-    const user = localStorage.getItem("user");
-    if (!user) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const userProfile = localStorage.getItem("userProfile");
+
+    if (isLoggedIn !== "true" || !userProfile) {
       alert("⚠ Please login to add packages!");
-      navigate("/login");
+      navigate("/signin");
     } else {
       navigate("/add-package");
     }
@@ -56,7 +60,6 @@ function AdventurePackage() {
           ⬅ Back to Home
         </button>
 
-        {/* Add Package only for logged-in users */}
         <button
           onClick={handleAddPackage}
           className="px-6 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition"
