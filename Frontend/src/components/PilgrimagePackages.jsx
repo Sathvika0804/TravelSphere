@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"; 
+import React, { useEffect, useState } from "react";  
 import { useNavigate } from "react-router-dom"; 
 
 function PilgrimagePackage() {
@@ -17,10 +17,12 @@ function PilgrimagePackage() {
       .catch(() => console.error("❌ Failed to load pilgrimage packages"));
   }, []);
 
-  // ✅ check login before viewing package
+  // ✅ Proper login check
   const handleViewMore = (pid) => {
-    const user = localStorage.getItem("user"); // must match your login storage key
-    if (!user) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const userProfile = localStorage.getItem("userProfile");
+
+    if (isLoggedIn !== "true" || !userProfile) {
       alert("⚠ Please login to view and book packages!");
       navigate("/signin");
     } else {
