@@ -1,5 +1,7 @@
+
+
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function HillStations() {
   const [packages, setPackages] = useState([]);
@@ -17,10 +19,12 @@ function HillStations() {
       .catch(() => console.error("❌ Failed to load packages"));
   }, []);
 
-  // ✅ check login helper
+  // Login check
   const handleViewMore = (pid) => {
-    const user = localStorage.getItem("user"); // or "token" if you store JWT
-    if (!user) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const userProfile = localStorage.getItem("userProfile");
+
+    if (isLoggedIn !== "true" || !userProfile) {
       alert("⚠ Please login to view and book packages!");
       navigate("/signin"); // redirect to login
     } else {
@@ -34,7 +38,7 @@ function HillStations() {
         🌄 Popular Hill Stations
       </h2>
 
-      {/* ✅ Buttons */}
+      {/* Back button */}
       <div className="flex justify-center gap-4 mb-6">
         <button
           onClick={() => navigate("/")}
