@@ -39,9 +39,3 @@ It allows users to explore destinations, book packages, and manage their profile
 1. Navigate to `frontend/`
 2. Install dependencies: `npm install`
 3. Start React: `npm start`
-
-## Contributing
-Feel free to fork and submit pull requests for improvements.
-
-## License
-MIT License
