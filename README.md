@@ -1,5 +1,3 @@
-# Travel-Management-System
-
 # TravelSphere 🌎
 
 TravelSphere is a full-stack travel management application built with **React**, **Spring Boot**, and **Hibernate (JPA)**.  
